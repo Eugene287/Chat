@@ -1,0 +1,23 @@
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	div.header
+			div.logo(align = 'center')
+				img(src = '/images/logo.png')
+	body
+		div.wrapper
+			div.menu
+				a(href = 'index') Главная
+				a(href = 'about') О компании
+				a(href = 'news') Новости
+				if (userid)
+					a(href = 'logout') Выход
+					a(href = 'cabinet') Кабинет пользователя 
+				else
+					a(href = 'reg') Вход/Регистрация
+			div.mainblock
+			block content
+		div.footer
+			p Minsk 2014
