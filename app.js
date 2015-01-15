@@ -14,6 +14,7 @@ var reg = require('./routes/reg');
 var auth = require('./routes/auth');
 
 var chat = require('./routes/chat');
+var video = require('./routes/video');
 
 
 var app = express();
@@ -56,6 +57,7 @@ app.get('/reg', reg.index);
 app.get('/cabinet', checkAuth, auth.cabinet);
 app.get('/logout', checkAuth, reg.logout);
 app.get('/chat', chat.index);
+app.get('/video', video.index);
 app.get('/:id', routes.index);//всегда последний
 
 
