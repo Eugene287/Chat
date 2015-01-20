@@ -1,3 +1,16 @@
 exports.index = function(req, res){
-  res.render('video');
+  config = require('../config');
+  
+  scripts = config.get('scripts');
+  
+  scripts.push('javascripts/vid.js');
+  
+  styles = config.get('styles');
+  
+  styles.push('stylesheets/video.css');
+  
+  res.render('video', {
+	styles : styles,
+	scripts : scripts}
+	);
 };

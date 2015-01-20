@@ -15,6 +15,7 @@ var auth = require('./routes/auth');
 
 var chat = require('./routes/chat');
 var video = require('./routes/video');
+var canvas = require('./routes/canvas');
 
 
 var app = express();
@@ -43,9 +44,12 @@ app.use (express.bodyParser({keepExtensions:true, uploadDir:'public/tmp'}));
 app.use(express.session({secret :'asd', key:'sid'}));
 app.use(function(req,res,next){
 	res.locals = {
-		userid : req.session.user};
+		scripts : config.get('scripts'),
+		styles : config.get('styles'),
+		userid : req.session.user
+		};
 		next();
-})
+});
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 
@@ -58,6 +62,7 @@ app.get('/cabinet', checkAuth, auth.cabinet);
 app.get('/logout', checkAuth, reg.logout);
 app.get('/chat', chat.index);
 app.get('/video', video.index);
+app.get('/canvas', canvas.index);
 app.get('/:id', routes.index);//всегда последний
 
 

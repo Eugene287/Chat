@@ -2,7 +2,10 @@ doctype html
 html
 	head
 		title= title
-		link(rel='stylesheet', href='/stylesheets/style.css')
+		for style in styles
+			link(rel='stylesheet', href='#{style}')
+		for script in scripts
+			script(src='#{script}')
 	div.header
 			div.logo(align = 'center')
 				img(src = '/images/logo.png')
@@ -14,6 +17,7 @@ html
 				a(href = 'news') Новости
 				a(href = 'chat') Чат
 				a(href = 'video') Видео
+				a(href = 'canvas') Галерея
 				if (userid)
 					a(href = 'logout') Выход
 					a(href = 'cabinet') Кабинет пользователя 
